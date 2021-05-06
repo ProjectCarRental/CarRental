@@ -16,3 +16,17 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+header {
+    background-color: #525C5E;
+
+    position: fixed; 
+    width: 100%;
+    top: 0;
+    
+}
+
+.search-bar {
+    background-color: #C4C4C4;
+    
+}
