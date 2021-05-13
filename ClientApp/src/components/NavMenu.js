@@ -34,7 +34,7 @@ export class NavMenu extends Component {
                   {/*Search bar?*/}
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/login">Login</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/login">Logga in</NavLink>
                 </NavItem>
               </ul>
             </Collapse>

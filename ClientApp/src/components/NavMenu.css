@@ -8,9 +8,10 @@ html {
   font-size: 14px;
 }
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+        font-weight: 500
+    }
 }
 
 .box-shadow {
@@ -18,10 +19,16 @@ html {
 }
 
 header {
-    background-color: #525C5E;
-    
+    background-color: #3c3d41;
     position: fixed;
     width: 100%;
     top: 0;
 }
 
+.navbar-light .navbar-brand {
+    color: rgba(255,255,255,1.00)
+}
+
+.text-dark {
+    color: rgba(255,255,255,1.00) !important;
+}
