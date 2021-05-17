@@ -1,4 +1,18 @@
 ﻿.textToImgrMargin{
    padding-top: 50px;
-   
+   padding-bottom: 50px;
+   text-align:center;   
+}
+
+.carousel {
+    width: 80%;
+    padding-bottom: 100px
+}
+
+.carousel-control-next {
+    padding-bottom: 100px;
+}
+
+.carousel-control-prev {
+    padding-bottom: 100px;
 }
