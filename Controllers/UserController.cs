@@ -7,17 +7,22 @@ using System.Threading.Tasks;
 
 namespace CarRental.Controllers
 {
-    //[Authorize]
-    public class UserController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class UserController : ControllerBase
     {
-        public IActionResult Index()
+        [HttpPost("signup")]
+        public ActionResult Register(User user)
         {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Register(User user)
-        {
-            return Ok();
+            var newUser = new User { 
+            Email = user.Email,
+            Password = user.Password
+            };
+            //TODO: skapa DBContext och database 
+            //UserContext.Add(newUser);
+            //UserContext.SaveChanges();
+
+            return Ok(newUser);
         }
 
     }
