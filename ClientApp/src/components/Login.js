@@ -1,28 +1,21 @@
 ﻿import React, { Component, setState } from 'react';
-import axios from "axios";
-const User_URL = "https://localhost:3000/user" 
+//ange localhost nummer till min api länken. den nummer hittas i projekts properties, debug.
+const User_URL = 'https://localhost:44322/User/signup'; 
 
 export class Login extends Component {
   constructor(props) {
     super(props);
-    this.handleRegister = this.handleRegister.bind(this);
+    this.registerUser = this.registerUser.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
   }
 
-  static displayName = Login.name;
-  state = {
+   state = {
     email: "",
     password: ""
   };
 
-  register(email, password) {
-    return axios.post(User_URL, {
-      email,
-      password
-    });
-  }
-  onChangeEmail(e) {
+    onChangeEmail(e) {
   this.setState({
       email: e.target.value
     });
@@ -35,26 +28,36 @@ export class Login extends Component {
       password: e.target.value
     });
   }
-  //onChange= 
+ //Jag har använd fetch istället för axios som hede cors problem att fixa.
+  registerUser = (e) => {
+    e.preventDefault();
+    fetch(User_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+        })
 
-  handleRegister(event) {
-    event.preventDefault();
-    this.register(
-      this.state.email,
-      this.state.password
-  );
-  console.log('Handle register called successfuly')
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .then(data => this.setState({
+        email: data.email,
+        password: data.password
+      }))
+      .catch(err => console.log(err));
   }
 
 
-
+    
 
   render() {
     return (
       <div className="parent-element">
 
         <form
-          onSubmit={this.handleRegister}>
+          onSubmit={this.registerUser}>
         
           <input
             type="text"
@@ -69,7 +72,7 @@ export class Login extends Component {
             value={this.state.password}
             onChange={this.onChangePassword}
           />
-          <button type="submit">Register</button>
+          <button>Register</button>
 
 
         </form>
