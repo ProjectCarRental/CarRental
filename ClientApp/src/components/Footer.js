@@ -1,4 +1,6 @@
 ﻿import React, { Component } from 'react';
+// Run "npm install react-bootstrap bootstrap@4.6.0"
+import Button from 'react-bootstrap/Button';
 import './Footer.css';
 
 export class Footer extends Component {
@@ -33,7 +35,7 @@ export class Footer extends Component {
             {/*  </div>*/}
             <div className="col-md-6">
               <ul className="list">
-                  <li><a href="#">About Us</a></li>
+                  <li><a href="/AboutUs">About Us</a></li>
                   <li><a href="#">Contacts</a></li>
                   <li><a href="#">Terms & Condition</a></li>
                   <li><a href="#">Privacy Policy</a></li>
@@ -62,9 +64,9 @@ export class Footer extends Component {
               <h4>Ladda ner!</h4>
               <p>Här kan ni ta del av vår rika applikation för en snabbare och enklare upplevelse</p>
             
-            <li><button>Iphone</button></li>
+            <li><Button>Iphone</Button></li>
             <p></p>
-            <li><button variant="light">Android</button></li>
+            <li><Button>Android</Button></li>
             
             </div>
             </div>
