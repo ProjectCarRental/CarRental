@@ -11,20 +11,24 @@ export class Home extends Component {
     return (
       <div>
         <img src={logo} alt="test front bild" />;
-        <h1>Så här fungerar det!</h1>
+        <h1>Så här fungerar det.</h1>
 
         <div className="row">
           <ul>
-            <li src={InfoLogo} alt="Infologo bild">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</li>
-          <p></p>
+            <img src={InfoLogo} alt="Infologo bild"/>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</li>
+            <p></p>
+            <img src={InfoLogo} alt="Infologo bild" />
           <li>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</li>
-          <p></p>
+            <p></p>
+            <img src={InfoLogo} alt="Infologo bild" />
           <li>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</li>
           <p></p>
           </ul>
           </div>
 
         <h1>Bilen för dig!</h1>
+        <img src={InfoLogo} alt="tmpBil bild" />
         <p>khsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdf
            khsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdf
           khsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdfkhsjdfkjldsfslkdfhjsdflksdf
