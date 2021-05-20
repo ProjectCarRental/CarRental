@@ -3,3 +3,11 @@
     margin-top: 10px;
     width: 50%;
 }
+
+.card {
+    border: none;
+}
+
+.card-text {
+    text-align: center;
+}
