@@ -58,7 +58,7 @@ export class Login extends Component {
   render() {
     return (
       <div className="body">
-       <div className="login-page">
+             <div className="login-page">
           <div class="form">
             <form class="login-form" onSubmit={this.loginUser}>
               <input type="text" placeholder="Användarnamn"
@@ -76,41 +76,9 @@ export class Login extends Component {
                 <p class="message">Inte registrerad?  <a href="/signup" onClick={() => this.state.login(false)}> Registrera</a></p>
               </form>
           </div>
-        </div>
+            </div>
 
-      </div>
+       </div>
     );
   }
-
-
-    
-
-  //render() {
-  //  return (
-  //    <div className="parent-element">
-
-  //      <form
-  //        onSubmit={this.registerUser}>
-        
-  //        <input
-  //          type="text"
-  //          name="email"
-  //          value={this.state.email}
-  //          onChange={this.onChangeEmail}
-  //           />
-
-  //        <input
-  //          type="text"
-  //          name="password"
-  //          value={this.state.password}
-  //          onChange={this.onChangePassword}
-  //        />
-  //        <button>Register</button>
-
-
-  //      </form>
-
-  //    </div>
-  //  );
-  // }
-  }
+ }
