@@ -1,18 +1,19 @@
-﻿import React, { Component, setState } from 'react';
+﻿import React, { Component, useState } from 'react';
+import './Login.css';
 //ange localhost nummer till min api länken. den nummer hittas i projekts properties, debug.
-const User_URL = 'https://localhost:44322/User/signup'; 
+const User_URL = 'https://localhost:44322/User/login'; 
 
 export class Login extends Component {
   constructor(props) {
     super(props);
-    this.registerUser = this.registerUser.bind(this);
+    this.loginUser = this.loginUser.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
   }
 
    state = {
     email: "",
-    password: ""
+     password: "",
   };
 
     onChangeEmail(e) {
@@ -29,7 +30,7 @@ export class Login extends Component {
     });
   }
  //Jag har använd fetch istället för axios som hede cors problem att fixa.
-  registerUser = (e) => {
+  loginUser = (e) => {
     e.preventDefault();
     fetch(User_URL, {
       method: 'POST',
@@ -46,38 +47,38 @@ export class Login extends Component {
         email: data.email,
         password: data.password
       }))
+ 
       .catch(err => console.log(err));
+    alert('login successfully done!  Press OK to redirect to Home page');
+    this.props.history.push('/')
+
   }
 
-
-    
 
   render() {
     return (
-      <div className="parent-element">
+      <div className="body">
+             <div className="login-page">
+          <div class="form">
+            <form class="login-form" onSubmit={this.loginUser}>
+              <input type="text" placeholder="Användarnamn"
+                name="email"
+                value={this.state.email}
+                onChange={this.onChangeEmail}
+              />
+              <input type="Lösenord" placeholder="Lösenord"
+                name="password"
+                value={this.state.password}
+                onChange={this.onChangePassword}
 
-        <form
-          onSubmit={this.registerUser}>
-        
-          <input
-            type="text"
-            name="email"
-            value={this.state.email}
-            onChange={this.onChangeEmail}
-             />
+              />
+              <button>Logga in</button> 
+                <p class="message">Inte registrerad?  <a href="/signup" onClick={() => this.state.login(false)}> Registrera</a></p>
+              </form>
+          </div>
+            </div>
 
-          <input
-            type="text"
-            name="password"
-            value={this.state.password}
-            onChange={this.onChangePassword}
-          />
-          <button>Register</button>
-
-
-        </form>
-
-      </div>
+       </div>
     );
-   }
   }
+ }
