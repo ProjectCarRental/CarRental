@@ -57,7 +57,7 @@ export class Login extends Component {
 
   render() {
     return (
-      <div className="body">
+      <div>
              <div className="login-page">
           <div class="form">
             <form class="login-form" onSubmit={this.loginUser}>
