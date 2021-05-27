@@ -1,17 +1,17 @@
 ﻿/*Logga in sida med css, här kan vi see hur css kan göra änderingar på htlm */
 
 body {
-    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
+    /*background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));*/
+    /*height: 100vh;*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
 }
 
 .login-page {
     background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(../images/Ferrari.jpg);
     width: 720px;
     padding: 10% 0 0;
-    margin: auto;
+    margin: 100px auto 50px;
     min-height: 550px;
 }
 
