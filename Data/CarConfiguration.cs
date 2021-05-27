@@ -20,6 +20,10 @@ namespace Data
                 .HasMaxLength(30);
 
             builder
+                .HasIndex(x => x.RegistrationNumber)
+                .IsUnique();
+
+            builder
                 .HasMany(Car => Car.Reservations)
                 .WithOne(reservation => reservation.Car)
                 .HasForeignKey(reservation => reservation.CarId);

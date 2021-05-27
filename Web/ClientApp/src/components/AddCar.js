@@ -5,10 +5,11 @@ export class AddCar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      regnr: "",
-      model: "",
-      prodyear: "",
-      mileage:""
+      registrationNumber: '',
+      model: '',
+      kilometersRun: '',
+      price: '',
+      productionYear: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,9 +25,17 @@ export class AddCar extends Component {
   }
 
   async sendTheData() {
-    let response = await fetch('/user/signup', {
+    let request = {
+      registrationNumber: this.state.registrationNumber,
+      model: this.state.model,
+      kilometersRun: parseInt(this.state.kilometersRun),
+      price: parseInt(this.state.price),
+      productionYear: this.state.productionYear
+    }
+
+    let response = await fetch('/api/cars', {
       method: 'POST',
-      body: JSON.stringify(this.state),
+      body: JSON.stringify(request),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -50,13 +59,13 @@ export class AddCar extends Component {
           <div className="form-group">
             <label for="formGroupExampleInput">Registrerings nummer</label>
             <input
-              name="regnr"
+              name="registrationNumber"
               type="text"
               class="form-control"
               id="formGroupExampleInput"
               placeholder="ABC 123"
               onChange={this.handleInputChange}
-              value={this.state.regnr}
+              value={this.state.registrationNumber}
             />
           </div>
           <div className="form-group">
@@ -74,25 +83,37 @@ export class AddCar extends Component {
           <div className="form-group">
             <label for="formGroupExampleInput">Årsmodell</label>
             <input
-              name="prodyear"
+              name="productionYear"
               type="text"
               class="form-control"
               id="formGroupExampleInput"
               placeholder="1997"
               onChange={this.handleInputChange}
-              value={this.state.prodyear}
+              value={this.state.productionYear}
             />
           </div>
           <div className="form-group">
             <label for="formGroupExampleInput">Miltal</label>
             <input
-              name="mileage"
+              name="kilometersRun"
               type="text"
               class="form-control"
               id="formGroupExampleInput"
               placeholder="10 000"
               onChange={this.handleInputChange}
-              value={this.state.mileage}
+              value={this.state.kilometersRun}
+            />
+          </div>
+          <div className="form-group">
+            <label for="formGroupExampleInput">Pris</label>
+            <input
+              name="price"
+              type="text"
+              class="form-control"
+              id="formGroupExampleInput"
+              placeholder="over 9000"
+              onChange={this.handleInputChange}
+              value={this.state.price}
             />
           </div>
           {/*<div class="form-group">*/}

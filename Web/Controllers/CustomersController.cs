@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Data;
 using Domain;
 
-namespace CarRental.Controllers
+namespace Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

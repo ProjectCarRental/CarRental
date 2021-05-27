@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Data;
 using Domain;
+using Web.RequestsAndResponses;
 
-namespace CarRental.Controllers
+namespace Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -23,14 +24,25 @@ namespace CarRental.Controllers
 
         // GET: api/Cars
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Car>>> GetCar()
+        public async Task<ActionResult<IEnumerable<CarResponse>>> GetCars()
         {
-            return await _context.Car.ToListAsync();
+            var carsFromDatabase = await _context.Car.ToListAsync();
+            var carResponses = carsFromDatabase.Select(car => 
+            new CarResponse 
+            {
+                Id = car.Id,
+                KilometersRun = car.KilometersRun,
+                Model = car.Model,
+                Price = car.Price,
+                ProductionYear = car.ProductionYear,
+                RegistrationNumber = car.RegistrationNumber
+            });
+            return Ok(carResponses);
         }
 
         // GET: api/Cars/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Car>> GetCar(int id)
+        [HttpGet("{id}", Name = "GetCar")]
+        public async Task<ActionResult<CarResponse>> GetCar(int id)
         {
             var car = await _context.Car.FindAsync(id);
 
@@ -39,7 +51,17 @@ namespace CarRental.Controllers
                 return NotFound();
             }
 
-            return car;
+            var carResponse = new CarResponse
+            {
+                Id = car.Id,
+                KilometersRun = car.KilometersRun,
+                Model = car.Model,
+                Price = car.Price,
+                ProductionYear = car.ProductionYear,
+                RegistrationNumber = car.RegistrationNumber
+            };
+
+            return carResponse;
         }
 
         // PUT: api/Cars/5
@@ -47,10 +69,14 @@ namespace CarRental.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCar(int id, Car car)
         {
+            // should not be able to change id.
+            // change to PutCarRequest
             if (id != car.Id)
             {
                 return BadRequest();
             }
+
+            //check if CarExists sooner.
 
             _context.Entry(car).State = EntityState.Modified;
 
@@ -76,12 +102,30 @@ namespace CarRental.Controllers
         // POST: api/Cars
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Car>> PostCar(Car car)
+        public async Task<ActionResult<CarResponse>> PostCar(AddCarRequest request)
         {
+            var car = new Car
+            {
+                KilometersRun = request.KilometersRun,
+                Model = request.Model,
+                Price = request.Price,
+                ProductionYear = request.ProductionYear,
+                RegistrationNumber = request.RegistrationNumber
+            };
             _context.Car.Add(car);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCar", new { id = car.Id }, car);
+            var carResponse = new CarResponse
+            {
+                Id = car.Id,
+                KilometersRun = car.KilometersRun,
+                Model = car.Model,
+                Price = car.Price,
+                ProductionYear = car.ProductionYear,
+                RegistrationNumber = car.RegistrationNumber
+            };
+
+            return CreatedAtAction("GetCar", new { id = carResponse.Id }, carResponse);
         }
 
         // DELETE: api/Cars/5
