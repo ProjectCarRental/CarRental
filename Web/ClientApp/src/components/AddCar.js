@@ -40,6 +40,9 @@ export class AddCar extends Component {
         'Content-Type': 'application/json'
       }
     });
+
+    alert('Successfully Added a Car!  Press OK to redirect to Home page');
+    this.props.history.push('/')
     console.log(response);
   }
 
