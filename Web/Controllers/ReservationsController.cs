@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Data;
 using Domain;
+using Web.RequestsAndResponses;
 
 namespace Web.Controllers
 {
@@ -23,14 +24,26 @@ namespace Web.Controllers
 
         // GET: api/Reservations
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservations()
+        public async Task<ActionResult<IEnumerable<ReservationResponse>>> GetReservations()
         {
-            return await _context.Reservations.ToListAsync();
+            var reservationsFromDatabase = await _context.Reservations.ToListAsync();
+            var reservationResponses = reservationsFromDatabase.Select(reservation =>
+            new ReservationResponse
+            {
+                Id = reservation.Id,
+                Date = reservation.Date,
+                Amount = reservation.Amount,
+                TimeReturn = reservation.TimeReturn,
+                CarId = reservation.CarId,
+                CustomerId = reservation.CustomerId,
+            });
+
+            return Ok(reservationResponses);
         }
 
         // GET: api/Reservations/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Reservation>> GetReservation(int id)
+        public async Task<ActionResult<ReservationResponse>> GetReservation(int id)
         {
             var reservation = await _context.Reservations.FindAsync(id);
 
@@ -39,7 +52,17 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            return reservation;
+            var reservationResponse = new ReservationResponse
+            {
+                Id = reservation.Id,
+                Date = reservation.Date,
+                Amount = reservation.Amount,
+                TimeReturn = reservation.TimeReturn,
+                CarId = reservation.CarId,
+                CustomerId = reservation.CustomerId,
+            };
+
+            return reservationResponse;
         }
 
         // PUT: api/Reservations/5
@@ -76,12 +99,31 @@ namespace Web.Controllers
         // POST: api/Reservations
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Reservation>> PostReservation(Reservation reservation)
+        public async Task<ActionResult<ReservationResponse>> PostReservation(AddReservationRequest request)
         {
+            var reservation = new Reservation
+            {
+                Date = request.Date,
+                Amount = request.Amount,
+                TimeReturn = request.TimeReturn,
+                CarId = request.CarId,
+                CustomerId = request.CustomerId,
+            };
+
             _context.Reservations.Add(reservation);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetReservation", new { id = reservation.Id }, reservation);
+            var reservationResponse = new ReservationResponse
+            {
+                Id = reservation.Id,
+                Date = reservation.Date,
+                Amount = reservation.Amount,
+                TimeReturn = reservation.TimeReturn,
+                CarId = reservation.CarId,
+                CustomerId = reservation.CustomerId,
+            };
+
+            return CreatedAtAction("GetReservation", new { id = reservationResponse.Id }, reservationResponse);
         }
 
         // DELETE: api/Reservations/5

@@ -32,7 +32,7 @@ export class Login extends Component {
  //Jag har använd fetch istället för axios som hede cors problem att fixa.
   loginUser = (e) => {
     e.preventDefault();
-    fetch(User_URL, {
+    fetch('api/customer', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -61,19 +61,25 @@ export class Login extends Component {
              <div className="login-page">
           <div class="form">
             <form class="login-form" onSubmit={this.loginUser}>
-              <input type="text" placeholder="Användarnamn"
+              <input
+                data-cy="loginEmail"
+                type="text"
+                placeholder="Email"
                 name="email"
                 value={this.state.email}
                 onChange={this.onChangeEmail}
               />
-              <input type="Lösenord" placeholder="Lösenord"
+              <input
+                data-cy="loginPassword"
+                type="Lösenord"
+                placeholder="Lösenord"
                 name="password"
                 value={this.state.password}
                 onChange={this.onChangePassword}
 
               />
-              <button>Logga in</button> 
-                <p class="message">Inte registrerad?  <a href="/signup" onClick={() => this.state.login(false)}> Registrera</a></p>
+              <button data-cy="SubmitLogin-button">Logga in</button> 
+                <p class="message">Inte registrerad?  <a data-cy="SignUp-button" href="/signup" onClick={() => this.state.login}> Registrera</a></p>
               </form>
           </div>
             </div>

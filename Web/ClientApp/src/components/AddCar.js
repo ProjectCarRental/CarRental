@@ -62,6 +62,7 @@ export class AddCar extends Component {
           <div className="form-group">
             <label for="formGroupExampleInput">Registrerings nummer</label>
             <input
+              data-cy="registrationNumber"
               name="registrationNumber"
               type="text"
               class="form-control"
@@ -74,6 +75,7 @@ export class AddCar extends Component {
           <div className="form-group">
             <label for="formGroupExampleInput2">Bilmodel</label>
             <input
+              data-cy="model"
               name="model"
               type="text"
               class="form-control"
@@ -86,6 +88,7 @@ export class AddCar extends Component {
           <div className="form-group">
             <label for="formGroupExampleInput">Årsmodell</label>
             <input
+              data-cy="productionYear"
               name="productionYear"
               type="text"
               class="form-control"
@@ -98,6 +101,7 @@ export class AddCar extends Component {
           <div className="form-group">
             <label for="formGroupExampleInput">Miltal</label>
             <input
+              data-cy="kilometersRun"
               name="kilometersRun"
               type="text"
               class="form-control"
@@ -110,6 +114,7 @@ export class AddCar extends Component {
           <div className="form-group">
             <label for="formGroupExampleInput">Pris</label>
             <input
+              data-cy="price"
               name="price"
               type="text"
               class="form-control"
@@ -130,7 +135,7 @@ export class AddCar extends Component {
           {/*  ></textarea>*/}
           {/*</div>*/}
           <div className="form-group AddBottomMargin">
-            <input type="submit" class="btn btn-primary" value="Send" />
+            <input data-cy="SubmitAddCar-button" type="submit" class="btn btn-primary" value="Send" />
           </div>
         </form>
       </div>

@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Web.RequestsAndResponses
 {
-    public class Customer
+    public class AddCustomerRequest
     {
-        public Customer()
-        {
-            Reservations = new List<Reservation>();
-        }
-        public int Id { get; set; }
+       
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string email { get; set; }
         public string Password { get; set; }
-        public List<Reservation> Reservations { get; set; }
+
     }
 }

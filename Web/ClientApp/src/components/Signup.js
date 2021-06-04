@@ -52,7 +52,7 @@ export class Signup extends Component {
   //Jag har använd fetch istället för axios som hede cors problem att fixa.
   registerUser = (e) => {
     e.preventDefault();
-    fetch(User_URL, {
+    fetch('api/Customers', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -83,27 +83,39 @@ export class Signup extends Component {
         <div className="login-page">
           <div class="form">
             <form class="login-form" onSubmit={this.registerUser}>
-              <input type="text" placeholder="Namn"
+              <input
+                data-cy="firstname"
+                type="text"
+                placeholder="Namn"
                 name="firstname"
                 value={this.state.firstname}
                 onChange={this.onChangeFirstName}
               />
-              <input type="text" placeholder="Efternamn"
+              <input
+                data-cy="lastname"
+                type="text"
+                placeholder="Efternamn"
                 name="lastname"
                 value={this.state.lastname}
                 onChange={this.onChangeLastName}
               />
-              <input type="text" placeholder="email"
+              <input
+                data-cy="email"
+                type="text"
+                placeholder="email"
                 name="email"
                 value={this.state.email}
                 onChange={this.onChangeEmail}
               />
-              <input type="Lösenord" placeholder="Lösenord"
+              <input
+                data-cy="password"
+                type="Lösenord"
+                placeholder="Lösenord"
                 name="password"
                 value={this.state.password}
                 onChange={this.onChangePassword}
               />
-                  <button>Skapa</button>
+              <button data-cy="AddCustomer-button" onClick={this.registerUser}>Skapa</button>
                   <p class="message">Redan Registrerad?  <a href="/login">Logga in</a> </p>
                 </form>
           </div>

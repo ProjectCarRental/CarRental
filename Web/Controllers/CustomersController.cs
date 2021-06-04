@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Data;
 using Domain;
+using Web.RequestsAndResponses;
 
 namespace Web.Controllers
 {
@@ -23,14 +24,24 @@ namespace Web.Controllers
 
         // GET: api/Customers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomer()
+        public async Task<ActionResult<IEnumerable<CustomerResponse>>> GetCustomer()
         {
-            return await _context.Customer.ToListAsync();
+            var customersFromDatabase = await _context.Customer.ToListAsync();
+            var customerResponses = customersFromDatabase.Select(customer =>
+            new CustomerResponse
+            {
+                Id = customer.Id,
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                email = customer.email,
+                Password = customer.Password,
+            });
+            return Ok(customerResponses);
         }
 
         // GET: api/Customers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(int id)
+        public async Task<ActionResult<CustomerResponse>> GetCustomer(int id)
         {
             var customer = await _context.Customer.FindAsync(id);
 
@@ -39,7 +50,16 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            return customer;
+            var customerResponse = new CustomerResponse
+            {
+                Id = customer.Id,
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                email = customer.email,
+                Password = customer.Password,
+            };
+
+            return customerResponse;
         }
 
         // PUT: api/Customers/5
@@ -76,12 +96,29 @@ namespace Web.Controllers
         // POST: api/Customers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
+        public async Task<ActionResult<CustomerResponse>> PostCustomer(AddCustomerRequest request)
         {
+            var customer = new Customer
+            {
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                email = request.email,
+                Password = request.Password,
+            };
+
             _context.Customer.Add(customer);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);
+            var customerResponse = new CustomerResponse
+            {
+                Id = customer.Id,
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                email = customer.email,
+                Password = customer.Password,
+            };
+
+            return CreatedAtAction("GetCustomer", new { id = customerResponse.Id }, customerResponse);
         }
 
         // DELETE: api/Customers/5
