@@ -26,15 +26,15 @@ export class NavMenu extends Component {
       <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm box-shadow" light>
           <Container>
-            <NavbarBrand tag={Link} to="/">Car Rental AB</NavbarBrand>
+            <NavbarBrand tag={Link} data-cy="home-button" to="/">Car Rental AB</NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
               <ul className="navbar-nav flex-grow">
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/Login">Logga in</NavLink>
+                  <NavLink tag={Link} data-cy="Login-button" className="text-dark" to="/Login">Logga in</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/AddCar">Registrera Bil</NavLink>
+                  <NavLink tag={Link} data-cy="AddCar-button" className="text-dark" to="/AddCar">Registrera Bil</NavLink>
                 </NavItem>
               </ul>
             </Collapse>

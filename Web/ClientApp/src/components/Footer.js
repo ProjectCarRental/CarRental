@@ -24,18 +24,9 @@ export class Footer extends Component {
             </div>
           <div className="col-md-4 footer-nav animated fadeInUp">
               <h4>FAQ</h4>
-            {/*<div className="col-md-6">*/}
-            {/*  <ul className="pages">*/}
-            {/*      <li><a href="#">Travel</a></li>*/}
-            {/*      <li><a href="#">Nature</a></li>*/}
-            {/*      <li><a href="#">Explores</a></li>*/}
-            {/*      <li><a href="#">Science</a></li>*/}
-            {/*      <li><a href="#">Advice</a></li>*/}
-            {/*    </ul>*/}
-            {/*  </div>*/}
             <div className="col-md-6">
               <ul className="list">
-                  <li><a href="/AboutUs">About Us</a></li>
+                <li><a data-cy="AboutUs-button" href="/AboutUs">About Us</a></li>
                   <li><a href="#">Contacts</a></li>
                   <li><a href="#">Terms & Condition</a></li>
                   <li><a href="#">Privacy Policy</a></li>
