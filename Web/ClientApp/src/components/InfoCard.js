@@ -11,6 +11,7 @@ export default class InfoCard extends Component {
   render() {
     return (
       <div className="card">
+        <img className="card-img-top imageSize" src={this.props.infoImage} />
         <div className="card-body">
           <p className="card-text">
             {this.props.infoText}

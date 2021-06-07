@@ -11,3 +11,8 @@
 .card-text {
     text-align: center;
 }
+
+.imageSize {
+    width: 150px;
+    margin-left: 65px;
+}

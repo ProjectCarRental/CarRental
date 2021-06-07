@@ -21,20 +21,16 @@ export class Home extends Component {
 
         <div className="row">
           <div className="col-md-3">
-            <img className="card-img-top" src={createAccount} />
-            <InfoCard  infoText="Börja med att skapa ett konto!"></InfoCard>
+            <InfoCard infoText="Börja med att skapa ett konto!" infoImage={createAccount}></InfoCard>
           </div>
           <div className="col-md-3">
-            <img className="card-img-top" src={login} />
-            <InfoCard  infoText="Logga in!"></InfoCard>
+            <InfoCard infoText="Logga in!" infoImage={login}></InfoCard>
           </div>
           <div className="col-md-3">
-            <img className="card-img-top" src={register} />
-            <InfoCard infoText="Registrera din bil på vår hemsida!"></InfoCard>
+            <InfoCard infoText="Registrera din bil på vår hemsida!" infoImage={register}></InfoCard>
           </div>
           <div className="col-md-3">
-            <img className="card-img-top" src={rentCar} />
-            <InfoCard infoText="Hyr den bil som passar dig bäst!"></InfoCard>
+            <InfoCard infoText="Hyr den bil som passar dig bäst!" infoImage={rentCar}></InfoCard>
           </div>
         </div>
 
