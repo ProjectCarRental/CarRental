@@ -17,3 +17,22 @@
 .carousel-control-prev {
     padding-bottom: 100px;
 }
+
+.carousel-caption {
+    color: #000000;
+}
+
+.textVolvo {
+    margin-left: 25rem;
+    margin-bottom: 13rem; 
+}
+
+.textDelorean {
+    margin-right: 25rem;
+}
+
+.textSaab {
+    margin-left: 25rem;
+    margin-bottom: 15rem;
+}
+
