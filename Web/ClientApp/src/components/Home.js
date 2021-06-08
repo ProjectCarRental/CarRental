@@ -45,15 +45,24 @@ export class Home extends Component {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img className="d-block w-100" src={delorean} alt="First slide" />
-              <div className="carousel-caption d-none d-md-block">
-                
+              <div className="carousel-caption textDelorean d-none d-md-block">
+                <h5>Delorean</h5>
+                <p>80kr/tim</p>
               </div>
             </div>
             <div className="carousel-item">
               <img className="d-block w-100" src={saab} alt="Second slide" />
+              <div className="carousel-caption textSaab d-none d-md-block">
+                <h5>Saab</h5>
+                <p>25kr/tim</p>
+              </div>
             </div>
             <div className="carousel-item">
               <img className="d-block w-100" src={volvo} alt="Third slide" />
+              <div className="carousel-caption textVolvo d-none d-md-block">
+                <h5>Volvo</h5>
+                <p>75kr/tim</p>
+              </div>
             </div>
           </div>
           <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
